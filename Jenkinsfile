@@ -1,5 +1,5 @@
 
-Map inputParams = [:]
+def inputParams = [:]
 inputParams.configuration = inputParams.get('configuration', 'Release')
 inputParams.maxcpucount = inputParams.get('maxcpucount', ':1')
 inputParams.verbosity = inputParams.get('verbosity', ':minimal')
@@ -22,9 +22,9 @@ inputParams.publishToArtifactory = inputParams.get('publishToArtifactory', false
         pipeline {
             agent {
                 docker {
-                    label "${inputParams.agentLabel}"
-                    image "${inputParams.dockerImage}"
-                    args  "${inputParams.dockerArgs}"
+                    label inputParams.agentLabel
+                    image inputParams.dockerImage
+                    args  inputParams.dockerArgs
                 }
             }
             options {
