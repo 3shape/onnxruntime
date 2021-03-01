@@ -17,7 +17,7 @@ inputParams.cmakePath = 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\
 inputParams.pipelineTimeoutMinutes = inputParams.get('pipelineTimeoutMinutes', 30)
 inputParams.publishToArtifactory = inputParams.get('publishToArtifactory', false)
 
-    pipelineHelper(sharedLibrary: this, parameters: inputParams) {
+    // pipelineHelper(sharedLibrary: this, parameters: inputParams) {
 
         pipeline {
             agent {
@@ -99,4 +99,4 @@ inputParams.publishToArtifactory = inputParams.get('publishToArtifactory', false
                 // }
             }//stages
         }//pipeline
-    }//pipelineHelper
+    // }//pipelineHelper
