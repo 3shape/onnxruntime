@@ -48,7 +48,7 @@ inputParams.publishToArtifactory = inputParams.get('publishToArtifactory', false
 
                 stage('Build solution') {
                     steps {
-                        powershell ".\build.bat --config Release --parallel --build_nuget --use_openmp --cmake_path \"${inputParams.cmakePath}\""
+                        powershell ".\\build.bat --config Release --parallel --build_nuget --use_openmp --cmake_path \"${inputParams.cmakePath}\""
                     }
                 }
 
