@@ -11,7 +11,7 @@ inputParams.testCaseFilter = inputParams.get('testCaseFilter', '')
 inputParams.nugetPackOutputDir = inputParams.get('nugetPackOutputDir', 'nuget-pack-out')
 inputParams.agentLabel = inputParams.get('agentLabel', 'windows2004')
 inputParams.dockerImage = inputParams.get('dockerImage', 'artifactorydk.3shape.local/threeshapedocker/threeshape.dotnet.framework.sdk.vcpp:4.8-wsc2004')
-inputParams.dockerArgs = inputParams.get('dockerArgs', '--entrypoint=\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\Common7\\Tools\\VsDevCmd.bat\"')
+inputParams.dockerArgs = inputParams.get('dockerArgs', "--entrypoint \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\Common7\\Tools\\VsDevCmd.bat\"")
 inputParams.cmakePath = 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe'
 
 inputParams.pipelineTimeoutMinutes = inputParams.get('pipelineTimeoutMinutes', 30)
