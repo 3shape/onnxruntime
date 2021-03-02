@@ -45,7 +45,8 @@ inputParams.publishToArtifactory = inputParams.get('publishToArtifactory', false
                         powershell 'gci env:'
                         powershell 'cinst miniconda3 -y --no-progress --params \'"/AddToPath:1"\''
                         powershell returnStatus: true, script: "where.exe python"
-                        powershell 'cinst nuget.commandline'
+                        powershell 'cinst nuget.commandline -y --no-progress'
+                        powershell returnStatus: true, script: "where.exe nuget"
                         // powershell "pip install numpy"
                     }
                 }
