@@ -43,7 +43,7 @@ inputParams.publishToArtifactory = inputParams.get('publishToArtifactory', false
                     steps {
                         echo "inputParams: ${inputParams}"
                         powershell 'gci env:'
-                        powershell 'cinst miniconda3 -y --no-progress -s https://artifactorydk.3shape.local/api/nuget/chocolatey --params \'"/AddToPath"\''
+                        powershell 'cinst miniconda3 -y --no-progress --params \'"/AddToPath:1"\''
                         powershell returnStatus: true, script: "where.exe python"
                         powershell "pip install numpy"
                     }
