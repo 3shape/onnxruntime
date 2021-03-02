@@ -49,10 +49,9 @@ inputParams.publishToArtifactory = inputParams.get('publishToArtifactory', false
                 stage('Build solution') {
                     steps {
                         // powershell "New-Item -Name /anaconda -ItemType Directory -Force | Out-Null"
-                        powershell 'cinst anaconda3 -y --no-progress -s https://artifactorydk.3shape.local/api/nuget/chocolatey --params \'"/AddToPath"\'' // /D:c:\\anaconda
+                        powershell 'cinst miniconda3 -y --no-progress -s https://artifactorydk.3shape.local/api/nuget/chocolatey --params \'"/AddToPath"\'' // /D:c:\\anaconda
                         powershell returnStatus: true, script: "where.exe python"
-                        powershell returnStatus: true, script: "where.exe python3"
-                        // powershell "python setup.py bdist_wheel"
+                        powershell "pip install numpy"
                         powershell ".\\build.bat --config Release --parallel --build_nuget --use_openmp --cmake_path \"${inputParams.cmakePath}\""
                     }
                 }
