@@ -45,13 +45,13 @@ inputParams.publishToArtifactory = inputParams.get('publishToArtifactory', false
                         powershell 'gci env:'
                         powershell 'cinst miniconda3 -y --no-progress --params \'"/AddToPath:1"\''
                         powershell returnStatus: true, script: "where.exe python"
-                        powershell "pip install numpy"
+                        // powershell "pip install numpy"
                     }
                 }
 
                 stage('Build solution') {
                     steps {
-                        powershell ".\\build.bat --config Release --parallel --build_nuget --use_openmp --cmake_path \"${inputParams.cmakePath}\""
+                        powershell ".\\build.bat --config Release --parallel --build_nuget --use_openmp --cmake_path \"${inputParams.cmakePath}\" --cmake_generator \"Visual Studio 16 2019\""
                     }
                 }
 
