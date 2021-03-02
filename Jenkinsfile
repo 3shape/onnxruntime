@@ -13,6 +13,7 @@ inputParams.agentLabel = inputParams.get('agentLabel', 'windows2004')
 inputParams.dockerImage = inputParams.get('dockerImage', 'artifactorydk.3shape.local/threeshapedocker-features/threeshape.dotnet.framework.sdk.vcpp:4.8-wsc2004-378d7c7')
 inputParams.dockerArgs = inputParams.get('dockerArgs', '')
 inputParams.cmakePath = 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe'
+inputParams.ctestPath = 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\ctest.exe'
 
 inputParams.pipelineTimeoutMinutes = inputParams.get('pipelineTimeoutMinutes', 30)
 inputParams.publishToArtifactory = inputParams.get('publishToArtifactory', false)
@@ -47,14 +48,13 @@ inputParams.publishToArtifactory = inputParams.get('publishToArtifactory', false
                         powershell returnStatus: true, script: "where.exe python"
                         // powershell 'cinst nuget.commandline -y --no-progress'
                         powershell returnStatus: true, script: "where.exe nuget"
-                        powershell returnStatus: true, script: "where.exe ctest"
                         // powershell "pip install numpy"
                     }
                 }
 
                 stage('Build solution') {
                     steps {
-                        powershell ".\\build.bat --config Release --parallel --build_nuget --use_openmp --cmake_path \"${inputParams.cmakePath}\" --cmake_generator \"Visual Studio 16 2019\""
+                        powershell ".\\build.bat --config Release --parallel --build_nuget --use_openmp --cmake_path \"${inputParams.cmakePath}\" --ctest_path \"${inputParams.ctestPath}\" --cmake_generator \"Visual Studio 16 2019\""
                     }
                 }
 
