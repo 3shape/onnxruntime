@@ -46,8 +46,9 @@ pipeline {
                 echo "inputParams: ${inputParams}"
                 powershell 'gci env:'
                 powershell 'cinst miniconda3 -y --no-progress --params \'"/AddToPath:1"\''
-                powershell returnStatus: true, script: "where.exe python"
-                powershell returnStatus: true, script: "where.exe nuget"
+                powershell returnStatus: true, script: 'where.exe python'
+                powershell returnStatus: true, script: 'where.exe nuget'
+                powershell 'pip install flatbuffers'
             }
         }
 
