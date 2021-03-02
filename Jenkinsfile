@@ -48,7 +48,7 @@ inputParams.publishToArtifactory = inputParams.get('publishToArtifactory', false
 
                 stage('Build solution') {
                     steps {
-                        powershell "cinst anaconda3 -y"
+                        powershell 'cinst anaconda3 -y --no-progress -s https://artifactorydk.3shape.local/api/nuget/chocolatey --params \'"/AddToPath /D:c:\\anaconda"\''
                         powershell "where.exe python"
                         powershell "where.exe python3"
                         // powershell "python setup.py bdist_wheel"
