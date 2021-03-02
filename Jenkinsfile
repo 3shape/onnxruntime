@@ -48,8 +48,8 @@ inputParams.publishToArtifactory = inputParams.get('publishToArtifactory', false
 
                 stage('Build solution') {
                     steps {
-                        powershell "cinst python3 -y"
-                        powershell "python setup.py bdist_wheel"
+                        powershell "cinst anaconda3 -y"
+                        // powershell "python setup.py bdist_wheel"
                         powershell ".\\build.bat --config Release --parallel --build_nuget --use_openmp --cmake_path \"${inputParams.cmakePath}\""
                     }
                 }
