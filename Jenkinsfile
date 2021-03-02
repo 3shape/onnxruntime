@@ -1,22 +1,22 @@
 
 def inputParams = [:]
-inputParams.configuration = inputParams.get('configuration', 'Release')
-inputParams.maxcpucount = inputParams.get('maxcpucount', ':1')
-inputParams.verbosity = inputParams.get('verbosity', ':minimal')
-inputParams.platform = inputParams.get('platform', 'Any CPU')
-inputParams.warningThreshold = inputParams.get('warningThreshold', 1)
-inputParams.testRunner = inputParams.get('testRunner', 'dotnet')
-inputParams.testPlatform = inputParams.get('testPlatform', 'x64')
-inputParams.testCaseFilter = inputParams.get('testCaseFilter', '')
-inputParams.nugetPackOutputDir = inputParams.get('nugetPackOutputDir', 'nuget-pack-out')
-inputParams.agentLabel = inputParams.get('agentLabel', 'windows2004')
-inputParams.dockerImage = inputParams.get('dockerImage', 'artifactorydk.3shape.local/threeshapedocker-features/threeshape.dotnet.framework.sdk.vcpp:4.8-wsc2004-378d7c7')
-inputParams.dockerArgs = inputParams.get('dockerArgs', '')
+inputParams.configuration = 'Release'
+inputParams.maxcpucount = ':1'
+inputParams.verbosity = ':minimal'
+inputParams.platform = 'Any CPU'
+inputParams.warningThreshold = 1
+inputParams.testRunner = 'dotnet'
+inputParams.testPlatform = 'x64'
+inputParams.testCaseFilter = ''
+inputParams.nugetPackOutputDir = 'nuget-pack-out'
+inputParams.agentLabel = 'windows2004'
+inputParams.dockerImage = 'artifactorydk.3shape.local/threeshapedocker/threeshape.dotnet.framework.sdk.vcpp:4.8-wsc2004'
+inputParams.dockerArgs = ''
 inputParams.cmakePath = 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe'
 inputParams.ctestPath = 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\ctest.exe'
 
-inputParams.pipelineTimeoutMinutes = inputParams.get('pipelineTimeoutMinutes', 60)
-inputParams.publishToArtifactory = inputParams.get('publishToArtifactory', false)
+inputParams.pipelineTimeoutMinutes = 60
+inputParams.publishToArtifactory = false
 
 pipeline {
     agent {
@@ -32,11 +32,10 @@ pipeline {
     }
     post {
         always {
-            powershell 'git clean -ffdx'
+            powershell 'git clean -fdx'
             powershell 'git lfs prune'
+            powershell 'git reset --hard --recurse-submodule'
             powershell 'git submodule foreach --recursive git clean -ffdx'
-            powershell 'git reset --hard'
-            powershell 'git submodule foreach --recursive git reset --hard'
             powershell 'git submodule update --init --recursive'
         }
     }
@@ -48,13 +47,11 @@ pipeline {
                 powershell 'gci env:'
                 powershell 'cinst miniconda3 -y --no-progress --params \'"/AddToPath:1"\''
                 powershell returnStatus: true, script: "where.exe python"
-                // powershell 'cinst nuget.commandline -y --no-progress'
                 powershell returnStatus: true, script: "where.exe nuget"
-                // powershell "pip install numpy"
             }
         }
 
-        stage('Build solution') {
+        stage('Build') {
             steps {
                 powershell ".\\build.bat --config Release --parallel --build_nuget --use_openmp --cmake_path \"${inputParams.cmakePath}\" --ctest_path \"${inputParams.ctestPath}\" --cmake_generator \"Visual Studio 16 2019\""
             }
