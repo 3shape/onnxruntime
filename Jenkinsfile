@@ -54,38 +54,9 @@ pipeline {
 
         stage('Build') {
             steps {
-                powershell ".\\build.bat --config Release --parallel --build_nuget --use_openmp --cmake_path \"${inputParams.cmakePath}\" --ctest_path \"${inputParams.ctestPath}\" --cmake_generator \"Visual Studio 16 2019\""
+                powershell ".\\build.bat --config Release --parallel --skip_tests --build_nuget --use_openmp --cmake_path \"${inputParams.cmakePath}\" --ctest_path \"${inputParams.ctestPath}\" --cmake_generator \"Visual Studio 16 2019\""
             }
         }
-
-        // stage('Run unit tests') {
-        //     when {
-        //         expression { return detectTestProject() }
-        //     }
-        //     steps {
-        //         runUnitTests    configuration: inputParams.configuration,
-        //                         testRunner: inputParams.testRunner,
-        //                         testPlatform: inputParams.testPlatform,
-        //                         testCaseFilter: inputParams.testCaseFilter,
-        //                         verbosity: inputParams.verbosity
-        //     }
-        //     post {
-        //         always {
-        //             step([$class: 'MSTestPublisher'])
-        //         }
-        //     }
-        // }
-
-        // stage('Pack') {
-        //     steps {
-        //         powershell "dotnet pack -c:${inputParams.configuration} --no-build --no-restore --output " +
-        //             "'${inputParams.nugetPackOutputDir}' -v${inputParams.verbosity}"
-
-        //         script {
-        //             dotnetUtils.checkNugetPackageFilenames()
-        //         }
-        //     }
-        // }
 
         // stage('Publish to Artifactory') {
         //     when {
