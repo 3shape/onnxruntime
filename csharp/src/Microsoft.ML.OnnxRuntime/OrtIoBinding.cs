@@ -5,7 +5,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Microsoft.ML.OnnxRuntime
+namespace Microsoft.ML.OnnxRuntime_v160
 {
     /// <summary>
     /// This class enable to bind inputs and outputs to pre-allocated

@@ -11,7 +11,7 @@
 #include <Windows.h>
 #endif
 
-const OrtApi* g_ort = OrtGetApiBase()->GetApi(ORT_API_VERSION);
+const OrtApi* g_ort = OrtGetApiBase_v160()->GetApi(ORT_API_VERSION);
 
 namespace onnxruntime {
 namespace test {

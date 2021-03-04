@@ -12,7 +12,7 @@
 // See the LICENSE file in the project root for more information.
 using System;
 
-namespace Microsoft.ML.OnnxRuntime.Tensors
+namespace Microsoft.ML.OnnxRuntime_v160.Tensors
 {
     /// <summary>
     /// A static class that houses static DenseTensor<T> extension methods

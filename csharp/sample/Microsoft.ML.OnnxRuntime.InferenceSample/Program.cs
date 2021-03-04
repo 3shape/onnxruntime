@@ -5,8 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-using Microsoft.ML.OnnxRuntime;
-using Microsoft.ML.OnnxRuntime.Tensors;
+using Microsoft.ML.OnnxRuntime_v160;
+using Microsoft.ML.OnnxRuntime_v160.Tensors;
 
 namespace CSharpUsage
 {

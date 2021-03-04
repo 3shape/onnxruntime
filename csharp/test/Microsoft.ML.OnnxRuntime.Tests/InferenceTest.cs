@@ -1,20 +1,20 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-using Microsoft.ML.OnnxRuntime.Tensors;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using Microsoft.ML.OnnxRuntime_v160.Tensors;
 using Xunit;
 using Xunit.Abstractions;
 
 // This runs in a separate package built from EndToEndTests
 // and for this reason it can not refer to non-public members
 // of Onnxruntime package
-namespace Microsoft.ML.OnnxRuntime.Tests
+namespace Microsoft.ML.OnnxRuntime_v160.Tests
 {
     public class InferenceTest
     {

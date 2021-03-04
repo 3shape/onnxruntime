@@ -37,12 +37,12 @@ def check_if_dlls_are_present(platforms_supported, zip_file):
     platforms = platforms_supported.strip().split(",")
     for platform in platforms:
         if platform.startswith("win"):
-            path = "runtimes/" + platform + "/native/onnxruntime.dll"
+            path = "runtimes/" + platform + "/native/onnxruntime_v160.dll"
             print('Checking path: ' + path)
             if (path not in zip_file.namelist()):
-                print("onnxruntime.dll not found for " + platform)
+                print("onnxruntime_v160.dll not found for " + platform)
                 print(zip_file.namelist())
-                raise Exception("onnxruntime.dll not found for " + platform)
+                raise Exception("onnxruntime_v160.dll not found for " + platform)
 
         elif platform.startswith("linux"):
             path = "runtimes/" + platform + "/native/libonnxruntime.so"

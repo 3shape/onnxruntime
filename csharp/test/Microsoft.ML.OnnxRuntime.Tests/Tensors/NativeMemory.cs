@@ -17,7 +17,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System;
 
-namespace Microsoft.ML.OnnxRuntime.Tensors.Tests
+namespace Microsoft.ML.OnnxRuntime_v160.Tensors.Tests
 {
     public class NativeMemory<T> : MemoryManager<T>
     {

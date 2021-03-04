@@ -30,7 +30,7 @@ std::shared_ptr<IExecutionProviderFactory> CreateExecutionProviderFactory_CPU(in
 
 }  // namespace onnxruntime
 
-ORT_API_STATUS_IMPL(OrtSessionOptionsAppendExecutionProvider_CPU, _In_ OrtSessionOptions* options, int use_arena) {
+ORT_API_STATUS_IMPL(OrtSessionOptionsAppendExecutionProvider_CPU_v160, _In_ OrtSessionOptions* options, int use_arena) {
   options->provider_factories.push_back(onnxruntime::CreateExecutionProviderFactory_CPU(use_arena));
   return nullptr;
 }

@@ -3,14 +3,14 @@
 
 using CommandLine;
 using Google.Protobuf;
-using Microsoft.ML.OnnxRuntime.Tensors;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using Microsoft.ML.OnnxRuntime_v160.Tensors;
 
-namespace Microsoft.ML.OnnxRuntime.PerfTool
+namespace Microsoft.ML.OnnxRuntime_v160.PerfTool
 {
     public enum TimingPoint
     {

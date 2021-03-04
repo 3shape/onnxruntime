@@ -6,10 +6,10 @@ using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Microsoft.ML.OnnxRuntime.Tensors;
 using System.Buffers;
+using Microsoft.ML.OnnxRuntime_v160.Tensors;
 
-namespace Microsoft.ML.OnnxRuntime
+namespace Microsoft.ML.OnnxRuntime_v160
 {
     /// <summary>
     /// Represents an Inference Session on an ONNX Model.

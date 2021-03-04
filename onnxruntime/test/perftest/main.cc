@@ -16,7 +16,7 @@ int real_main(int argc, wchar_t* argv[]) {
 #else
 int real_main(int argc, char* argv[]) {
 #endif
-  g_ort = OrtGetApiBase()->GetApi(ORT_API_VERSION);
+  g_ort = OrtGetApiBase_v160()->GetApi(ORT_API_VERSION);
   perftest::PerformanceTestConfig test_config;
   if (!perftest::CommandLineParser::ParseArguments(test_config, argc, argv)) {
     perftest::CommandLineParser::ShowUsage();

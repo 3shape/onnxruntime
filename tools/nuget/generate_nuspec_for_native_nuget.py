@@ -112,19 +112,19 @@ def generate_dependencies(list, package_name, version):
         list.append('<dependencies>')
         # Support .Net Core
         list.append('<group targetFramework="NETCOREAPP">')
-        list.append('<dependency id="Microsoft.ML.OnnxRuntime.Managed"' + ' version="' + version + '"/>')
+        list.append('<dependency id="ThreeShape.ML.OnnxRuntime.Managed"' + ' version="' + version + '"/>')
         if include_dml:
             list.append(dml_dependency)
         list.append('</group>')
         # Support .Net Standard
         list.append('<group targetFramework="NETSTANDARD">')
-        list.append('<dependency id="Microsoft.ML.OnnxRuntime.Managed"' + ' version="' + version + '"/>')
+        list.append('<dependency id="ThreeShape.ML.OnnxRuntime.Managed"' + ' version="' + version + '"/>')
         if include_dml:
             list.append(dml_dependency)
         list.append('</group>')
         # Support .Net Framework
         list.append('<group targetFramework="NETFRAMEWORK">')
-        list.append('<dependency id="Microsoft.ML.OnnxRuntime.Managed"' + ' version="' + version + '"/>')
+        list.append('<dependency id="ThreeShape.ML.OnnxRuntime.Managed"' + ' version="' + version + '"/>')
         if include_dml:
             list.append(dml_dependency)
         list.append('</group>')
@@ -182,7 +182,7 @@ def generate_metadata(list, args):
 def generate_files(list, args):
     files_list = ['<files>']
 
-    is_cpu_package = args.package_name in ['Microsoft.ML.OnnxRuntime', 'Microsoft.ML.OnnxRuntime.NoOpenMP']
+    is_cpu_package = args.package_name in ['ThreeShape.ML.OnnxRuntime', 'ThreeShape.ML.OnnxRuntime.NoOpenMP']
     is_mklml_package = args.package_name == 'Microsoft.ML.OnnxRuntime.MKLML'
     is_cuda_gpu_package = args.package_name == 'Microsoft.ML.OnnxRuntime.Gpu'
     is_dml_package = args.package_name == 'Microsoft.ML.OnnxRuntime.DirectML'
@@ -299,12 +299,12 @@ def generate_files(list, args):
     # Process runtimes
     # Process onnxruntime import lib, dll, and pdb
     if is_windows_build:
-        files_list.append('<file src=' + '"' + os.path.join(args.native_build_path, 'onnxruntime.lib') +
+        files_list.append('<file src=' + '"' + os.path.join(args.native_build_path, 'onnxruntime_v160.lib') +
                           runtimes + ' />')
-        files_list.append('<file src=' + '"' + os.path.join(args.native_build_path, 'onnxruntime.dll') +
+        files_list.append('<file src=' + '"' + os.path.join(args.native_build_path, 'onnxruntime_v160.dll') +
                           runtimes + ' />')
         if os.path.exists(os.path.join(args.native_build_path, 'onnxruntime.pdb')):
-            files_list.append('<file src=' + '"' + os.path.join(args.native_build_path, 'onnxruntime.pdb') +
+            files_list.append('<file src=' + '"' + os.path.join(args.native_build_path, 'onnxruntime_v160.pdb') +
                               runtimes + ' />')
     else:
         files_list.append('<file src=' + '"' + os.path.join(args.native_build_path, 'nuget-staging/usr/local/lib',
@@ -478,6 +478,7 @@ def validate_execution_provider(execution_provider):
 def main():
     # Parse arguments
     args = parse_arguments()
+    args.package_name = "ThreeShape.ML.OnnxRuntime"
 
     validate_platform()
 

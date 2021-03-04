@@ -398,7 +398,7 @@ ORT_API_STATUS_IMPL(OrtApis::RegisterCustomOpsLibrary, _Inout_ OrtSessionOptions
   if (!RegisterCustomOps)
     return OrtApis::CreateStatus(ORT_FAIL, "RegisterCustomOpsLibrary: Entry point RegisterCustomOps not found in library");
 
-  return RegisterCustomOps(options, OrtGetApiBase());
+  return RegisterCustomOps(options, OrtGetApiBase_v160());
   API_IMPL_END
 }
 
@@ -2090,7 +2090,7 @@ ORT_API(const char*, OrtApis::GetVersionString) {
   return ORT_VERSION;
 }
 
-const OrtApiBase* ORT_API_CALL OrtGetApiBase(void) NO_EXCEPTION {
+const OrtApiBase* ORT_API_CALL OrtGetApiBase_v160(void) NO_EXCEPTION {
   return &ort_api_base;
 }
 

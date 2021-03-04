@@ -66,9 +66,9 @@ struct Global {
 template <typename T>
 #ifdef ORT_API_MANUAL_INIT
 const OrtApi* Global<T>::api_{};
-inline void InitApi() { Global<void>::api_ = OrtGetApiBase()->GetApi(ORT_API_VERSION); }
+inline void InitApi() { Global<void>::api_ = OrtGetApiBase_v160()->GetApi(ORT_API_VERSION); }
 #else
-const OrtApi* Global<T>::api_ = OrtGetApiBase()->GetApi(ORT_API_VERSION);
+const OrtApi* Global<T>::api_ = OrtGetApiBase_v160()->GetApi(ORT_API_VERSION);
 #endif
 
 // This returns a reference to the OrtApi interface in use, in case someone wants to use the C API functions

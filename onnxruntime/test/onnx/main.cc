@@ -47,7 +47,7 @@ void usage() {
       "\t-h: help\n"
       "\n"
       "onnxruntime version: %s\n",
-      OrtGetApiBase()->GetVersionString());
+      OrtGetApiBase_v160()->GetVersionString());
 }
 
 #ifdef _WIN32

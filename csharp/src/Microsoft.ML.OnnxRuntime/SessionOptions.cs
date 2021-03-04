@@ -5,7 +5,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Microsoft.ML.OnnxRuntime
+namespace Microsoft.ML.OnnxRuntime_v160
 {
     /// <summary>
     /// Graph optimization level to use with SessionOptions
@@ -71,7 +71,7 @@ namespace Microsoft.ML.OnnxRuntime
             CheckCudaExecutionProviderDLLs();
             SessionOptions options = new SessionOptions();
             NativeApiStatus.VerifySuccess(NativeMethods.OrtSessionOptionsAppendExecutionProvider_CUDA(options.Handle, deviceId));
-            NativeApiStatus.VerifySuccess(NativeMethods.OrtSessionOptionsAppendExecutionProvider_CPU(options.Handle, 1));
+            NativeApiStatus.VerifySuccess(NativeMethods.OrtSessionOptionsAppendExecutionProvider_CPU_v160(options.Handle, 1));
             return options;
         }
 
@@ -97,7 +97,7 @@ namespace Microsoft.ML.OnnxRuntime
         /// <param name="useArena">1 - use arena, 0 - do not use arena</param>
         public void AppendExecutionProvider_CPU(int useArena)
         {
-            NativeApiStatus.VerifySuccess(NativeMethods.OrtSessionOptionsAppendExecutionProvider_CPU(handle, useArena));
+            NativeApiStatus.VerifySuccess(NativeMethods.OrtSessionOptionsAppendExecutionProvider_CPU_v160(handle, useArena));
         }
 
         /// <summary>

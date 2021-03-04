@@ -28,7 +28,7 @@ using System.Text;
                               "a18fb0e1")]
 
 
-namespace Microsoft.ML.OnnxRuntime.Tensors
+namespace Microsoft.ML.OnnxRuntime_v160.Tensors
 {
     /// <summary>
     /// Supported Tensor DataType

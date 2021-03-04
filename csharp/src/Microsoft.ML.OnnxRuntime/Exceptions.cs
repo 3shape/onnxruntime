@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Microsoft.ML.OnnxRuntime
+namespace Microsoft.ML.OnnxRuntime_v160
 {
 
     /// <summary>

@@ -1,13 +1,13 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-using Microsoft.ML.OnnxRuntime.Tensors;
 using System;
 using System.Buffers;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using Microsoft.ML.OnnxRuntime_v160.Tensors;
 
-namespace Microsoft.ML.OnnxRuntime
+namespace Microsoft.ML.OnnxRuntime_v160
 {
     /// <summary>
     /// A type of data that OrtValue encapsulates.

@@ -1,13 +1,13 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-using Microsoft.ML.OnnxRuntime.Tensors;
 using System;
 using System.Linq;
+using Microsoft.ML.OnnxRuntime_v160.Tensors;
 using Xunit;
-using static Microsoft.ML.OnnxRuntime.Tests.InferenceTest;
+using static Microsoft.ML.OnnxRuntime_v160.Tests.InferenceTest;
 
-namespace Microsoft.ML.OnnxRuntime.Tests
+namespace Microsoft.ML.OnnxRuntime_v160.Tests
 {
     public class OrtIoBindingAllocationTest
     {
@@ -80,7 +80,7 @@ namespace Microsoft.ML.OnnxRuntime.Tests
                         Assert.Equal(outputName, output.Name);
                         var tensor = output.AsTensor<float>();
                         Assert.True(tensor.IsFixedSize);
-                        Assert.Equal(outputData, tensor.ToArray<float>(), new floatComparer());
+                        Assert.Equal(outputData, tensor.ToArray<float>(), new InferenceTest.floatComparer());
                     }
                 }
 
@@ -95,7 +95,7 @@ namespace Microsoft.ML.OnnxRuntime.Tests
                         Assert.Equal(outputName, output.Name);
                         var tensor = output.AsTensor<float>();
                         Assert.True(tensor.IsFixedSize);
-                        Assert.Equal(outputData, tensor.ToArray<float>(), new floatComparer());
+                        Assert.Equal(outputData, tensor.ToArray<float>(), new InferenceTest.floatComparer());
                     }
                 }
             }

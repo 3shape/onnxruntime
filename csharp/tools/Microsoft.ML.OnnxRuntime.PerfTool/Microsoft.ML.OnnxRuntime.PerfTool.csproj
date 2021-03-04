@@ -32,11 +32,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Visible>false</Visible>
     </None>
-    <None Include="$(NativeBuildOutputDir)\onnxruntime.dll" Condition="'$(IsLinuxBuild)'=='false'">
+    <None Include="$(NativeBuildOutputDir)\onnxruntime_v160.dll" Condition="'$(IsLinuxBuild)'=='false'">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Visible>false</Visible>
     </None>
-    <None Include="$(NativeBuildOutputDir)\onnxruntime.pdb" Condition="'$(IsLinuxBuild)'=='false'And Exists('$(NativeBuildOutputDir)\onnxruntime.pdb')">
+    <None Include="$(NativeBuildOutputDir)\onnxruntime_v160.pdb" Condition="'$(IsLinuxBuild)'=='false'And Exists('$(NativeBuildOutputDir)\onnxruntime_v160.pdb')">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Visible>false</Visible>
     </None>

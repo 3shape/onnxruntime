@@ -13,7 +13,7 @@
 
 using System;
 
-namespace Microsoft.ML.OnnxRuntime.Tensors
+namespace Microsoft.ML.OnnxRuntime_v160.Tensors
 {
     public static partial class TensorOperations
     {

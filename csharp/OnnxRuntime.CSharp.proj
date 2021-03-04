@@ -8,14 +8,14 @@ CMake creates a target to this project
 <Project DefaultTargets="Build">
   
   <PropertyGroup>
-    <OrtPackageId Condition=" '$(OrtPackageId)' == '' ">Microsoft.ML.OnnxRuntime</OrtPackageId>
+    <OrtPackageId Condition=" '$(OrtPackageId)' == '' ">ThreeShape.ML.OnnxRuntime</OrtPackageId>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
     <DotNetExe Condition= " '$(DotNetExe)' == '' ">dotnet</DotNetExe>
     <NugetExe Condition= " '$(NugetExe)' == '' ">nuget</NugetExe>
     <TargetArchitecture Condition=" '$(TargetArchitecture)' == '' ">x64</TargetArchitecture>
-    <IsReleaseBuild Condition=" '$(IsReleaseBuild)' == '' ">false</IsReleaseBuild>
+    <IsReleaseBuild Condition=" '$(IsReleaseBuild)' == '' ">true</IsReleaseBuild>
     <IsLinuxBuild Condition=" '$(IsLinuxBuild)' == '' ">false</IsLinuxBuild>
     <ExecutionProvider Condition=" '$(ExecutionProvider)' == '' ">None</ExecutionProvider>
     <IsStoreBuild Condition=" '$(IsStoreBuild)' == '' ">false</IsStoreBuild>
@@ -136,7 +136,7 @@ CMake creates a target to this project
     </Exec>
 
     <Copy
-    SourceFiles="$(NativeBuildOutputDirAbs)\$(OrtPackageId).$(PackageVersion).nupkg"
+    SourceFiles="$(NativeBuildOutputDirAbs)\ThreeShape.ML.OnnxRuntime.$(PackageVersion).nupkg"
     DestinationFolder="$(NativeBuildOutputDirAbs)\nuget-artifacts"
     />
   </Target>

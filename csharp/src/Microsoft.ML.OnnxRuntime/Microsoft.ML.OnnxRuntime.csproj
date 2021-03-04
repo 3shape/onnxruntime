@@ -15,15 +15,15 @@
     <TargetArchitecture Condition=" '$(TargetArchitecture)' == '' ">x64</TargetArchitecture>  
     
     <!--- packaging properties -->
-    <OrtPackageId Condition=" '$(OrtPackageId)' == '' ">Microsoft.ML.OnnxRuntime</OrtPackageId>
+    <OrtPackageId Condition=" '$(OrtPackageId)' == '' ">ThreeShape.OnnxRuntime_v160</OrtPackageId>
 
     <!--- The package name is always hardcoded as the package created by this project only contains managed assemblies -->
     <!--- The parameter OrtPackageId is only used for some conditional logic below -->    
-    <PackageId>Microsoft.ML.OnnxRuntime.Managed</PackageId>
+    <PackageId>ThreeShape.ML.OnnxRuntime.Managed</PackageId>
     <Authors>Microsoft</Authors>
     <PackageVersion Condition=" '$(PackageVersion)' == '' ">0.0</PackageVersion>
     <Version>$(PackageVersion)</Version>
-    <Description>This package contains ONNX Runtime for .Net platforms</Description>
+    <Description>This package contains ONNX Runtime for .Net platforms. Customized build by 3Shape A/S.</Description>
     <PackageTags>ONNX;ONNX Runtime;Machine Learning</PackageTags>
     <PackageProjectUrl>https://github.com/Microsoft/onnxruntime</PackageProjectUrl>
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
@@ -40,7 +40,7 @@
     <!-- Optional: Embed source files that are not tracked by the source control manager in the PDB -->
     <!--EmbedUntrackedSources>true</EmbedUntrackedSources-->
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-    <Configurations>Debug;Release;RelWithDebInfo</Configurations>
+    <Configurations>Release</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(IsLinuxBuild)'=='true'">
@@ -92,22 +92,22 @@
           CopyToOutputDirectory="Never"
           Visible="false"
     />
-    <None Include="$(NativeBuildOutputDir)\onnxruntime.lib"
-          Condition="Exists('$(NativeBuildOutputDir)\onnxruntime.lib')"
+    <None Include="$(NativeBuildOutputDir)\onnxruntime_v160.lib"
+          Condition="Exists('$(NativeBuildOutputDir)\onnxruntime_v160.lib')"
           PackagePath="\runtimes\win-$(TargetArchitecture)\native"
           Pack="false"
           CopyToOutputDirectory="Never"
           Visible="false"
     />
-    <None Include="$(NativeBuildOutputDir)\onnxruntime.dll"
-          Condition="Exists('$(NativeBuildOutputDir)\onnxruntime.dll')"
+    <None Include="$(NativeBuildOutputDir)\onnxruntime_v160.dll"
+          Condition="Exists('$(NativeBuildOutputDir)\onnxruntime_v160.dll')"
           PackagePath="\runtimes\win-$(TargetArchitecture)\native"
           Pack="false"
           CopyToOutputDirectory="Always"
           Visible="false"
     />
-    <None Include="$(NativeBuildOutputDir)\onnxruntime.pdb"
-          Condition="Exists('$(NativeBuildOutputDir)\onnxruntime.pdb')"
+    <None Include="$(NativeBuildOutputDir)\onnxruntime_v160.pdb"
+          Condition="Exists('$(NativeBuildOutputDir)\onnxruntime_v160.pdb')"
           PackagePath="\runtimes\win-$(TargetArchitecture)\native"
           Pack="false"
           CopyToOutputDirectory="Always"

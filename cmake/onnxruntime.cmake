@@ -139,6 +139,7 @@ install(TARGETS onnxruntime
         RUNTIME  DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 set_target_properties(onnxruntime PROPERTIES FOLDER "ONNXRuntime")
+set_target_properties(onnxruntime PROPERTIES OUTPUT_NAME "onnxruntime_v160")
 
 if (WINDOWS_STORE)
   target_link_options(onnxruntime PRIVATE /DELAYLOAD:api-ms-win-core-libraryloader-l1-2-1.dll)

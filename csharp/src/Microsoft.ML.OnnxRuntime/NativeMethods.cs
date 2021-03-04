@@ -4,7 +4,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Microsoft.ML.OnnxRuntime
+namespace Microsoft.ML.OnnxRuntime_v160
 {
     [StructLayout(LayoutKind.Sequential)]
     public struct OrtApiBase
@@ -192,7 +192,7 @@ namespace Microsoft.ML.OnnxRuntime
 
     internal static class NativeMethods
     {
-        private const string nativeLib = "onnxruntime";
+        private const string nativeLib = "onnxruntime_v160";
         internal const CharSet charSet = CharSet.Ansi;
 
         static OrtApi api_;
@@ -201,7 +201,7 @@ namespace Microsoft.ML.OnnxRuntime
 
         static NativeMethods()
         {
-            DOrtGetApi OrtGetApi = (DOrtGetApi)Marshal.GetDelegateForFunctionPointer(OrtGetApiBase().GetApi, typeof(DOrtGetApi));
+            DOrtGetApi OrtGetApi = (DOrtGetApi)Marshal.GetDelegateForFunctionPointer(OrtGetApiBase_v160().GetApi, typeof(DOrtGetApi));
 
             // TODO: Make this save the pointer, and not copy the whole structure across
             api_ = (OrtApi)OrtGetApi(4 /*ORT_API_VERSION*/);
@@ -335,7 +335,7 @@ namespace Microsoft.ML.OnnxRuntime
         }
 
         [DllImport(nativeLib, CharSet = charSet)]
-        public static extern ref OrtApiBase OrtGetApiBase();
+        public static extern ref OrtApiBase OrtGetApiBase_v160();
 
         #region Runtime/Environment API
 
@@ -550,7 +550,7 @@ namespace Microsoft.ML.OnnxRuntime
         //  * Calling this API is optional in which case onnxruntime will use its internal CPU execution provider.
         //  */
         [DllImport(nativeLib, CharSet = charSet)]
-        public static extern IntPtr /*(OrtStatus*)*/ OrtSessionOptionsAppendExecutionProvider_CPU(IntPtr /*(OrtSessionOptions*) */ options, int use_arena);
+        public static extern IntPtr /*(OrtStatus*)*/ OrtSessionOptionsAppendExecutionProvider_CPU_v160(IntPtr /*(OrtSessionOptions*) */ options, int use_arena);
 
         [DllImport(nativeLib, CharSet = charSet)]
         public static extern IntPtr /*(OrtStatus*)*/ OrtSessionOptionsAppendExecutionProvider_Dnnl(IntPtr /*(OrtSessionOptions*) */ options, int use_arena);

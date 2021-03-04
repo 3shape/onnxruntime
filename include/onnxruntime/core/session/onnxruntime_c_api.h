@@ -292,7 +292,7 @@ struct OrtApiBase {
 };
 typedef struct OrtApiBase OrtApiBase;
 
-ORT_EXPORT const OrtApiBase* ORT_API_CALL OrtGetApiBase(void) NO_EXCEPTION;
+ORT_EXPORT const OrtApiBase* ORT_API_CALL OrtGetApiBase_v160(void) NO_EXCEPTION;
 
 struct OrtApi {
   /**
@@ -427,7 +427,7 @@ struct OrtApi {
   /**
     * To use additional providers, you must build ORT with the extra providers enabled. Then call one of these
     * functions to enable them in the session:
-    *   OrtSessionOptionsAppendExecutionProvider_CPU
+    *   OrtSessionOptionsAppendExecutionProvider_CPU_v160
     *   OrtSessionOptionsAppendExecutionProvider_CUDA
     *   OrtSessionOptionsAppendExecutionProvider_<remaining providers...>
     * The order they are called indicates the preference order as well. In other words call this method

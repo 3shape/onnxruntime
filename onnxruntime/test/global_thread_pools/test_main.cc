@@ -52,7 +52,7 @@ int main(int argc, char** argv) {
   int status = 0;
   ORT_TRY {
     ::testing::InitGoogleTest(&argc, argv);
-    const OrtApi* g_ort = OrtGetApiBase()->GetApi(ORT_API_VERSION);
+    const OrtApi* g_ort = OrtGetApiBase_v160()->GetApi(ORT_API_VERSION);
     OrtThreadingOptions* tp_options;
     std::unique_ptr<OrtStatus, decltype(OrtApi::ReleaseStatus)> st_ptr(nullptr, g_ort->ReleaseStatus);
 

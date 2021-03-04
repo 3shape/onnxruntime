@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Collections.Generic;
 
 
-namespace Microsoft.ML.OnnxRuntime
+namespace Microsoft.ML.OnnxRuntime_v160
 {
     internal struct GlobalOptions  //Options are currently not accessible to user
     {

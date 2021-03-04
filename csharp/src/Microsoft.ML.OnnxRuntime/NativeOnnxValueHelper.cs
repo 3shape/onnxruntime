@@ -1,12 +1,12 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-using Microsoft.ML.OnnxRuntime.Tensors;
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
+using Microsoft.ML.OnnxRuntime_v160.Tensors;
 
-namespace Microsoft.ML.OnnxRuntime
+namespace Microsoft.ML.OnnxRuntime_v160
 {
     internal class PinnedGCHandle : IDisposable
     {

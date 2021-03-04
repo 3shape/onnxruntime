@@ -36,7 +36,7 @@ symbols = sorted(symbols)
 symbol_index = 1
 with open(args.output, 'w') as file:
     if args.style == 'vc':
-        file.write('LIBRARY "onnxruntime.dll"\n')
+        file.write('LIBRARY "onnxruntime_v160.dll"\n')
         file.write('EXPORTS\n')
     elif args.style == 'xcode':
         pass    # xcode compile don't has any header.
@@ -59,7 +59,7 @@ with open(args.output, 'w') as file:
         file.write("};   \n")
 
 with open(args.output_source, 'w') as file:
-    file.write("#include <onnxruntime_c_api.h>\n")
+    file.write("#include <.h>\n")
     for c in args.config:
         # WinML adapter should not be exported in platforms other than Windows.
         # Exporting OrtGetWinMLAdapter is exported without issues using .def file when compiling for Windows

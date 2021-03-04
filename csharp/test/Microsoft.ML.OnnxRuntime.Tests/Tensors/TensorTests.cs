@@ -17,7 +17,7 @@ using System.Linq;
 using Xunit;
 using System;
 
-namespace Microsoft.ML.OnnxRuntime.Tensors.Tests
+namespace Microsoft.ML.OnnxRuntime_v160.Tensors.Tests
 {
     public class TensorTests : TensorTestsBase
     {
