@@ -70,7 +70,12 @@ pipeline {
             steps {
                 script {
                     def nupkgs = findFiles glob: "build/Windows/Release/*.nupkg"
-                    echo nupkgs
+                    String files = ''
+                    nupkgs.each {
+                        files += it.toString().plus('\n')
+                    }
+                    echo files
+                    echo "${nupkgs}"
                 }
                 uploadNugetToArtifactory nugetPackOutputDir: inputParams.nugetPackOutputDir
             }
