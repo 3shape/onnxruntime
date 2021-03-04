@@ -34,8 +34,8 @@ pipeline {
         always {
             powershell 'git clean -fdx'
             powershell 'git lfs prune'
-            powershell 'git reset --hard --recurse-submodule'
             powershell 'git submodule foreach --recursive git clean -ffdx'
+            powershell 'git reset --hard --recurse-submodule'
             powershell 'git submodule update --init --recursive'
         }
     }
