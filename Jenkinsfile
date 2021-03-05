@@ -8,7 +8,7 @@ inputParams.warningThreshold = 1
 inputParams.testRunner = 'dotnet'
 inputParams.testPlatform = 'x64'
 inputParams.testCaseFilter = ''
-inputParams.nugetPackOutputDir = 'build/Windows/Release'
+inputParams.nugetPackOutputDir = 'build/Windows/Release/Release'
 inputParams.agentLabel = 'windows2004'
 inputParams.dockerImage = 'artifactorydk.3shape.local/threeshapedocker/threeshape.dotnet.framework.sdk.vcpp:4.8-wsc2004'
 inputParams.dockerArgs = ''
@@ -69,7 +69,7 @@ pipeline {
             }
             steps {
                 script {
-                    def nupkgs = findFiles glob: "build/Windows/Release/*.nupkg"
+                    def nupkgs = findFiles glob: "${inputParams.nugetPackOutputDir}/*.nupkg"
                     String files = ''
                     nupkgs.each {
                         files += it.toString().plus('\n')
