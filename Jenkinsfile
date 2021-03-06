@@ -8,7 +8,6 @@ inputParams.warningThreshold = 1
 inputParams.testRunner = 'dotnet'
 inputParams.testPlatform = 'x64'
 inputParams.testCaseFilter = ''
-inputParams.nugetPackOutputDir = "build/Windows/Release/${inputParams.configuration}"
 inputParams.agentLabel = 'windows2004'
 inputParams.dockerImage = 'artifactorydk.3shape.local/threeshapedocker/threeshape.dotnet.framework.sdk.vcpp:4.8-wsc2004'
 inputParams.dockerArgs = ''
@@ -64,8 +63,13 @@ pipeline {
                     expression { inputParams.publishToArtifactory }
                 }
             }
+            environment {
+                managedOutputPath = "csharp/src/Microsoft.ML.OnnxRuntime/bin/${inputParams.configuration}"
+                nativeOutputPath = "build/Windows/Release/${inputParams.configuration}"
+            }
             steps {
-                uploadNugetToArtifactory nugetPackOutputDir: inputParams.nugetPackOutputDir
+                uploadNugetToArtifactory nugetPackOutputDir: managedOutputPath
+                uploadNugetToArtifactory nugetPackOutputDir: nativeOutputPath
             }
             post {
                 success {
