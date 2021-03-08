@@ -41,6 +41,7 @@
     <!--EmbedUntrackedSources>true</EmbedUntrackedSources-->
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <Configurations>Release</Configurations>
+    <AssemblyName>ThreeShape.ML.OnnxRuntime.v160</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(IsLinuxBuild)'=='true'">
