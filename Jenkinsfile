@@ -52,7 +52,7 @@ pipeline {
         stage('Build') {
             steps {
                 dotnetTool tool: 'gitversion'
-                powershell ".\\build.bat --config ${inputParams.configuration} --parallel --skip_tests --build_nuget --use_openmp --cmake_path \"${inputParams.cmakePath}\" --ctest_path \"${inputParams.ctestPath}\" --cmake_generator \"Visual Studio 16 2019\""
+                powershell ".\\build.bat --config ${inputParams.configuration} --parallel --skip_tests --build_nuget --use_dml --use_openmp --cmake_path \"${inputParams.cmakePath}\" --ctest_path \"${inputParams.ctestPath}\" --cmake_generator \"Visual Studio 16 2019\""
             }
         }
 
