@@ -200,7 +200,7 @@ common::Status LoadDynamicLibraryFromProvider(onnxruntime::PathString library_na
 // wrapped = The internal object is exposed as an opaque pointer, so we wrap it in a class that forwards every call to the real calls. No members are ever directly accessed
 // direct = Same implementation is used for shared providers & core code, but some of the methods need to be routed through here to make the linker happy
 struct ProviderHostImpl : ProviderHost {
-  const OrtApiBase* OrtGetApiBase() override { return ::OrtGetApiBase(); }
+  const OrtApiBase* OrtGetApiBase_v1180() override { return ::OrtGetApiBase_v1180(); }
 
   void* HeapAllocate(size_t size) override { return new uint8_t[size]; }
   void HeapFree(void* p) override { delete[] reinterpret_cast<uint8_t*>(p); }

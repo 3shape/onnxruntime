@@ -38,7 +38,7 @@ onnxruntime::Status OrtSessionOptions::RegisterCustomOpsLibrary(onnxruntime::Pat
                                                         (void**)&RegisterCustomOps));
 
   // Call the exported RegisterCustomOps function and store the return value in a unique_ptr.
-  const std::unique_ptr<OrtStatus, decltype(&OrtApis::ReleaseStatus)> status(RegisterCustomOps(this, OrtGetApiBase()),
+  const std::unique_ptr<OrtStatus, decltype(&OrtApis::ReleaseStatus)> status(RegisterCustomOps(this, OrtGetApiBase_v1180()),
                                                                              OrtApis::ReleaseStatus);
 
   if (status) {  // A non-nullptr status indicates an error registering custom ops.

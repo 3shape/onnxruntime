@@ -235,6 +235,9 @@ set_target_properties(onnxruntime PROPERTIES
   FOLDER "ONNXRuntime"
 )
 
+set_target_properties(onnxruntime PROPERTIES OUTPUT_NAME "onnxruntime_v1180")
+
+
 install(TARGETS onnxruntime
         EXPORT ${PROJECT_NAME}Targets
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/onnxruntime

@@ -90,7 +90,7 @@ struct Global {
 template <typename T>
 #ifdef ORT_API_MANUAL_INIT
 const OrtApi* Global<T>::api_{};
-inline void InitApi() noexcept { Global<void>::api_ = OrtGetApiBase()->GetApi(ORT_API_VERSION); }
+inline void InitApi() noexcept { Global<void>::api_ = OrtGetApiBase_v1180()->GetApi(ORT_API_VERSION); }
 
 // Used by custom operator libraries that are not linked to onnxruntime. Sets the global API object, which is
 // required by C++ APIs.
@@ -114,7 +114,7 @@ inline void InitApi(const OrtApi* api) noexcept { Global<void>::api_ = api; }
 // Please define ORT_API_MANUAL_INIT if it conerns you.
 #pragma warning(disable : 26426)
 #endif
-const OrtApi* Global<T>::api_ = OrtGetApiBase()->GetApi(ORT_API_VERSION);
+const OrtApi* Global<T>::api_ = OrtGetApiBase_v1180()->GetApi(ORT_API_VERSION);
 #if defined(_MSC_VER) && !defined(__clang__)
 #pragma warning(pop)
 #endif

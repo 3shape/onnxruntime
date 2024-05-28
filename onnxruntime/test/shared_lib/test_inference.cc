@@ -1935,7 +1935,7 @@ TEST(ReducedOpsBuildTest, test_excluded_ops) {
 
 TEST(CApiTest, get_allocator_cpu) {
   Ort::SessionOptions session_options;
-  Ort::ThrowOnError(OrtSessionOptionsAppendExecutionProvider_CPU(session_options, 1));
+  Ort::ThrowOnError(OrtSessionOptionsAppendExecutionProvider_CPU_v1180(session_options, 1));
   Ort::Session session(*ort_env, NAMED_AND_ANON_DIM_PARAM_URI, session_options);
   Ort::MemoryInfo info_cpu = Ort::MemoryInfo::CreateCpu(OrtAllocatorType::OrtArenaAllocator, OrtMemTypeDefault);
   Ort::Allocator cpu_allocator(session, info_cpu);
@@ -2000,7 +2000,7 @@ TEST(CApiTest, get_allocator_rocm) {
 
 TEST(CApiTest, io_binding) {
   Ort::SessionOptions session_options;
-  Ort::ThrowOnError(OrtSessionOptionsAppendExecutionProvider_CPU(session_options, 1));
+  Ort::ThrowOnError(OrtSessionOptionsAppendExecutionProvider_CPU_v1180(session_options, 1));
   Ort::Session session(*ort_env, MODEL_URI, session_options);
 
   Ort::MemoryInfo info_cpu = Ort::MemoryInfo::CreateCpu(OrtAllocatorType::OrtArenaAllocator, OrtMemTypeDefault);
@@ -3046,7 +3046,7 @@ TEST(CApiTest, model_metadata) {
 }
 
 TEST(CApiTest, get_available_providers) {
-  const OrtApi* g_ort = OrtGetApiBase()->GetApi(ORT_API_VERSION);
+  const OrtApi* g_ort = OrtGetApiBase_v1180()->GetApi(ORT_API_VERSION);
   int len = 0;
   char** providers;
   ASSERT_EQ(g_ort->GetAvailableProviders(&providers, &len), nullptr);
@@ -3397,7 +3397,7 @@ TEST(CApiTest, AllocateInitializersFromNonArenaMemory) {
   Ort::ThrowOnError(OrtSessionOptionsAppendExecutionProvider_CUDA(session_options, 0));
 #else
   // arena is enabled but the sole initializer will still be allocated from non-arena memory
-  Ort::ThrowOnError(OrtSessionOptionsAppendExecutionProvider_CPU(session_options, 1));
+  Ort::ThrowOnError(OrtSessionOptionsAppendExecutionProvider_CPU_v1180(session_options, 1));
 #endif
 
   // disable using arena for the sole initializer in the model

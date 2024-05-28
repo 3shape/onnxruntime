@@ -1928,7 +1928,7 @@ inline void Op::Invoke(const OrtKernelContext* context,
 }
 
 inline std::string GetVersionString() {
-  return OrtGetApiBase()->GetVersionString();
+  return OrtGetApiBase_v1180()->GetVersionString();
 }
 
 inline std::string GetBuildInfoString() {

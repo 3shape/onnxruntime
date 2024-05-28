@@ -49,7 +49,7 @@
   } while (false)
 
 // Same helpers for public API OrtStatus. Get the 'api' instance using:
-//   const OrtApi* api = OrtGetApiBase()->GetApi(ORT_API_VERSION);
+//   const OrtApi* api = OrtGetApiBase_v1180()->GetApi(ORT_API_VERSION);
 #define ASSERT_ORTSTATUS_OK(api, function)                                \
   do {                                                                    \
     OrtStatusPtr _tmp_status = (api->function);                           \

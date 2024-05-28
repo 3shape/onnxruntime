@@ -653,7 +653,7 @@ typedef struct OrtTrainingApi OrtTrainingApi;
 
 /** \brief The helper interface to get the right version of OrtApi
  *
- * Get a pointer to this structure through ::OrtGetApiBase
+ * Get a pointer to this structure through ::OrtGetApiBase_v1180
  */
 struct OrtApiBase {
   /** \brief Get a pointer to the requested version of the ::OrtApi
@@ -680,7 +680,7 @@ typedef struct OrtApiBase OrtApiBase;
  *
  * Call this to get the a pointer to an ::OrtApiBase
  */
-ORT_EXPORT const OrtApiBase* ORT_API_CALL OrtGetApiBase(void) NO_EXCEPTION;
+ORT_EXPORT const OrtApiBase* ORT_API_CALL OrtGetApiBase_v1180(void) NO_EXCEPTION;
 
 /** \brief Thread work loop function
  *

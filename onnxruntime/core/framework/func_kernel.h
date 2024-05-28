@@ -46,7 +46,7 @@ class FunctionKernel : public OpKernel {
 
   virtual Status Compute(OpKernelContext* context) const override {
     auto* context_internal = static_cast<OpKernelContextInternal*>(context);
-    const OrtApi* api = OrtGetApiBase()->GetApi(ORT_API_VERSION);
+    const OrtApi* api = OrtGetApiBase_v1180()->GetApi(ORT_API_VERSION);
     if (api == nullptr) return ORT_MAKE_STATUS(ONNXRUNTIME, INVALID_ARGUMENT, "API VERSION ", ORT_API_VERSION, " is invalid.");
     return compute_info_->compute_func(func_state_, api,
                                        reinterpret_cast<OrtKernelContext*>(context_internal));

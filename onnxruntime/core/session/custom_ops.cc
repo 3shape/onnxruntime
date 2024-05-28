@@ -777,11 +777,11 @@ struct CustomOpKernel : OpKernel {
       Ort::ThrowOnError(
           op_.CreateKernelV2(
               &op_,
-              OrtGetApiBase()->GetApi(op_.version),
+              OrtGetApiBase_v1180()->GetApi(op_.version),
               reinterpret_cast<const OrtKernelInfo*>(&info),
               &op_kernel_));
     } else {
-      op_kernel_ = op_.CreateKernel(&op_, OrtGetApiBase()->GetApi(op_.version),
+      op_kernel_ = op_.CreateKernel(&op_, OrtGetApiBase_v1180()->GetApi(op_.version),
                                     reinterpret_cast<const OrtKernelInfo*>(&info));
     }
   }

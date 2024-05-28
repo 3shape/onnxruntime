@@ -133,7 +133,7 @@ struct Node__EdgeIterator {
 #pragma warning(disable : 26436)
 #endif
 struct ProviderHost {
-  virtual const OrtApiBase* OrtGetApiBase() = 0;
+  virtual const OrtApiBase* OrtGetApiBase_v1180() = 0;
 
   virtual void* HeapAllocate(size_t size) = 0;
   virtual void HeapFree(void*) = 0;

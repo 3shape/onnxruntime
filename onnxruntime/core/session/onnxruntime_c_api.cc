@@ -617,7 +617,7 @@ ORT_API_STATUS_IMPL(OrtApis::RegisterCustomOpsLibrary, _Inout_ OrtSessionOptions
   if (!RegisterCustomOps)
     return OrtApis::CreateStatus(ORT_FAIL, "RegisterCustomOpsLibrary: Entry point RegisterCustomOps not found in library");
 
-  return RegisterCustomOps(options, OrtGetApiBase());
+  return RegisterCustomOps(options, OrtGetApiBase_v1180());
   API_IMPL_END
 }
 
@@ -652,7 +652,7 @@ ORT_API_STATUS_IMPL(OrtApis::RegisterCustomOpsUsingFunction, _Inout_ OrtSessionO
                                  "RegisterCustomOpsUsingFunction: Registration function was not found");
   }
 
-  return RegisterCustomOps(options, OrtGetApiBase());
+  return RegisterCustomOps(options, OrtGetApiBase_v1180());
 #else
   ORT_UNUSED_PARAMETER(options);
   ORT_UNUSED_PARAMETER(registration_func_name);
@@ -666,7 +666,7 @@ ORT_API_STATUS_IMPL(OrtApis::EnableOrtCustomOps, _Inout_ OrtSessionOptions* opti
 
   if (options) {
 #ifdef ENABLE_EXTENSION_CUSTOM_OPS
-    return RegisterCustomOps(options, OrtGetApiBase());
+    return RegisterCustomOps(options, OrtGetApiBase_v1180());
 #else
     return OrtApis::CreateStatus(ORT_FAIL, "EnableOrtCustomOps: Custom operators in onnxruntime-extensions are not enabled");
 #endif
@@ -2732,7 +2732,7 @@ static constexpr OrtApi ort_api_1_to_18 = {
     // End of Version 18 - DO NOT MODIFY ABOVE (see above text for more information)
 };
 
-// OrtApiBase can never change as there is no way to know what version of OrtApiBase is returned by OrtGetApiBase.
+// OrtApiBase can never change as there is no way to know what version of OrtApiBase is returned by OrtGetApiBase_v1180.
 static_assert(sizeof(OrtApiBase) == sizeof(void*) * 2, "New methods can't be added to OrtApiBase as it is not versioned");
 static_assert(offsetof(OrtApiBase, GetApi) / sizeof(void*) == 0, "These functions cannot be reordered");
 static_assert(offsetof(OrtApiBase, GetVersionString) / sizeof(void*) == 1, "These functions cannot be reordered");
@@ -2790,7 +2790,7 @@ ORT_API(const char*, OrtApis::GetBuildInfoString) {
   return ORT_BUILD_INFO;
 }
 
-const OrtApiBase* ORT_API_CALL OrtGetApiBase(void) NO_EXCEPTION {
+const OrtApiBase* ORT_API_CALL OrtGetApiBase_v1180(void) NO_EXCEPTION {
   return &ort_api_base;
 }
 

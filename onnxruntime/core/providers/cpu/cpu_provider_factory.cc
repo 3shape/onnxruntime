@@ -33,7 +33,7 @@ std::shared_ptr<IExecutionProviderFactory> CPUProviderFactoryCreator::Create(int
 
 }  // namespace onnxruntime
 
-ORT_API_STATUS_IMPL(OrtSessionOptionsAppendExecutionProvider_CPU, _In_ OrtSessionOptions* options, int use_arena) {
+ORT_API_STATUS_IMPL(OrtSessionOptionsAppendExecutionProvider_CPU_v1180, _In_ OrtSessionOptions* options, int use_arena) {
   options->provider_factories.push_back(onnxruntime::CPUProviderFactoryCreator::Create(use_arena));
   return nullptr;
 }

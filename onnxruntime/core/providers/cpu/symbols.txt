@@ -1,2 +1,2 @@
-OrtGetApiBase
-OrtSessionOptionsAppendExecutionProvider_CPU
+OrtGetApiBase_v1180
+OrtSessionOptionsAppendExecutionProvider_CPU_v1180
